@@ -29,6 +29,36 @@
       "precioProducto": "250",
       "categoria": "bebida-caliente",
       "id": 5
+    },
+    {
+      "nombreProducto": "medialuna x unidad",
+      "precioProducto": "40",
+      "categoria": "dulce",
+      "id": 6
+    },
+    {
+      "nombreProducto": "brownie",
+      "precioProducto": "100",
+      "categoria": "dulce",
+      "id": 7
+    },
+    {
+      "nombreProducto": "tortilla x5",
+      "precioProducto": "100",
+      "categoria": "salado",
+      "id": 8
+    },
+    {
+      "nombreProducto": "alfajores",
+      "precioProducto": "100",
+      "categoria": "dulce",
+      "id": 9
+    },
+    {
+      "nombreProducto": "pan x kg",
+      "precioProducto": "100",
+      "categoria": "salado",
+      "id": 10
     }
   ]
 }
