@@ -61,6 +61,8 @@ const AgregarProducto = (props) => {
           )
           // limpiar el formuario
           // setNombreProducto(''); setPrecioProducto(''); setCategoria('')
+          // recargar los productos
+          props.consultarAPI();
           // redireccionar a otra ruta
           props.history.push('/productos');
         }

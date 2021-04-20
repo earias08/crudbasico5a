@@ -35,10 +35,10 @@ function App() {
           <Inicio></Inicio>
         </Route>
         <Route exact path="/productos">
-          <ListaProductos productos={productos}></ListaProductos>
+          <ListaProductos productos={productos} consultarAPI={consultarAPI}></ListaProductos>
         </Route>
         <Route exact path="/productos/nuevo">
-          <AgregarProducto></AgregarProducto>
+          <AgregarProducto consultarAPI={consultarAPI}></AgregarProducto>
         </Route>
       </Switch>
       <Footer></Footer>
