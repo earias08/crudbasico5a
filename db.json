@@ -65,6 +65,18 @@
       "precioProducto": "40",
       "categoria": "bebida-caliente",
       "id": 11
+    },
+    {
+      "nombreProducto": "licuado",
+      "precioProducto": "200",
+      "categoria": "bebida-fria",
+      "id": 12
+    },
+    {
+      "nombreProducto": "54654",
+      "precioProducto": "500",
+      "categoria": "dulce",
+      "id": 13
     }
   ]
 }
