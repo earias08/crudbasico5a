@@ -1,6 +1,7 @@
-import React, {useState, Fragment, useEffect} from 'react';
+import React, {useState, Fragment, useEffect, useRef} from 'react';
 import { Container, Form, Button, Alert } from "react-bootstrap";
 import {useParams} from 'react-router-dom';
+import { campoRequerido, rangoValor} from '../helpers/validaciones'
 
 const EditarProducto = () => {
     // obtengo el parametro de la URL
@@ -9,6 +10,11 @@ const EditarProducto = () => {
     console.log(URL)
     // declaro los state
     const [producto, setProducto] = useState({});
+    const [categoria, setCategoria] = useState("");
+    // crear useRef
+    const nombreProductoRef = useRef('');
+    const precioProductoRef = useRef(0);    
+
 
     // traer los datos del objeto a editar
     useEffect(()=>{
@@ -28,18 +34,55 @@ const EditarProducto = () => {
         }
     }
 
-
-    const [categoria, setCategoria] = useState("");
-
-
     const cambiarCategoria = (e) => {
         setCategoria(e.target.value);
       };
 
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+    //    revisar si la categoria cambio, si no lo hizo conservar la categoria del state producto
+        const categoriaSeleccionada = (categoria === '')? producto.categoria : categoria;
+
+        // validar los datos
+        if(campoRequerido(nombreProductoRef.current.value) && rangoValor(parseInt(precioProductoRef.current.value)) && campoRequerido(categoriaSeleccionada)){
+            // si esta todo bien enviar la peticion PUT a la api
+            // armar el objeto a enviar
+
+            const productoEditado ={
+                nombreProducto: nombreProductoRef.current.value,
+                precioProducto: precioProductoRef.current.value,
+                categoria: categoriaSeleccionada
+            }
+
+            console.log(productoEditado);
+
+            try{
+                const respuesta = await fetch(URL+"/"+id,{
+                    method: "PUT",
+                    headers:{
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(productoEditado)
+                });
+                console.log(respuesta);
+
+            }catch(error){
+                console.log(error);
+                // mostrar al usuario que ocurrio un error
+            }
+
+        }else{
+            console.log('mostrar cartel de error')
+        }
+
+        // si algo falla mostrar el alert de error
+
+    }
+
     return (
         <Fragment>
       <Container className="my-4">
-        <Form >
+        <Form onSubmit={handleSubmit}>
           <h1 className="my-4 text-center">Editar producto</h1>
           <Form.Group>
             {/* {error === true ? (
@@ -53,6 +96,7 @@ const EditarProducto = () => {
               type="text"
               placeholder="Submarino"
               defaultValue={producto.nombreProducto}
+              ref={nombreProductoRef}
             ></Form.Control>
           </Form.Group>
           <Form.Group>
@@ -60,7 +104,8 @@ const EditarProducto = () => {
             <Form.Control
               type="number"
               placeholder="$50"   
-              defaultValue={producto.precioProducto}      
+              defaultValue={producto.precioProducto}    
+              ref={precioProductoRef}  
             ></Form.Control>
           </Form.Group>
           <div className="text-center my-4">
@@ -112,7 +157,7 @@ const EditarProducto = () => {
             ></Form.Check>
           </div>
           <Button variant="danger" type="submit" className="w-100">
-            Agregar Producto
+            Guardar Producto
           </Button>
         </Form>
       </Container>
