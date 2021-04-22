@@ -41,7 +41,7 @@ function App() {
         <Route exact path="/productos/nuevo">
           <AgregarProducto consultarAPI={consultarAPI}></AgregarProducto>
         </Route>
-        <Route exact path='/productos/editar'>
+        <Route exact path='/productos/editar/:id'>
           <EditarProducto></EditarProducto>
         </Route>
       </Switch>
