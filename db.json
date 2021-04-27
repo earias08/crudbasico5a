@@ -19,8 +19,8 @@
       "id": 3
     },
     {
-      "nombreProducto": "cafe",
-      "precioProducto": "50",
+      "nombreProducto": "café",
+      "precioProducto": "60",
       "categoria": "bebida-caliente",
       "id": 4
     },
@@ -55,14 +55,14 @@
       "id": 10
     },
     {
-      "nombreProducto": "té",
-      "precioProducto": "40",
+      "nombreProducto": "té de manzanilla",
+      "precioProducto": "45",
       "categoria": "bebida-caliente",
       "id": 11
     },
     {
       "nombreProducto": "jugo de naranja",
-      "precioProducto": "100",
+      "precioProducto": "200",
       "categoria": "bebida-fria",
       "id": 14
     }

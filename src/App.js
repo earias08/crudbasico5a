@@ -8,6 +8,7 @@ import Navegacion from "./components/common/Navegacion";
 import Footer from "./components/common/Footer";
 import {useState, useEffect} from 'react';
 import EditarProducto from "./components/Productos/EditarProducto";
+import Error404 from "./components/Error404";
 
 function App() {
   const URL = process.env.REACT_APP_API_URL;
@@ -42,7 +43,10 @@ function App() {
           <AgregarProducto consultarAPI={consultarAPI}></AgregarProducto>
         </Route>
         <Route exact path='/productos/editar/:id'>
-          <EditarProducto></EditarProducto>
+          <EditarProducto consultarAPI={consultarAPI}></EditarProducto>
+        </Route>
+        <Route exact path='*'>
+          <Error404></Error404>
         </Route>
       </Switch>
       <Footer></Footer>
